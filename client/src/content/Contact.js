@@ -1,12 +1,10 @@
 import React from 'react';
-
+import ContactForm from '../components/ContactForm';
 const Contact = props => {
   return(
     <>
-      <div className="condiv contact">
-        <div className="container">
-          <h1>Hello from Contact</h1>
-        </div>
+      <div className="condiv">
+          <ContactForm />        
       </div>
     </>
   );

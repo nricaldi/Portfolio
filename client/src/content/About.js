@@ -12,7 +12,7 @@ const About = props => {
 
     return(
       <>
-        <div className="condiv about">
+        <div className="about">
           <div className="container">
             <h1 className="title">About</h1>
             {/* <div style={{overflow: 'hidden'}}> */}

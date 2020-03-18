@@ -9,7 +9,7 @@ import proj2 from '../img/proj2.WebP';
 const Portfolio = props => {
   return(
     <>
-      <div className="condiv portfolio">
+      <div className="portfolio">
         <div className="container">
           <h1 className="title">Portfolio</h1>
           <hr className="line"></hr>

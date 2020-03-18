@@ -7,7 +7,7 @@ import Zoom from 'react-reveal/Zoom';
 const Home = props => {
   return(
       <>
-        <div className="condiv home">
+        <div className="home">
           
           <Bounce cascade>
             <h1>Hello,</h1>            

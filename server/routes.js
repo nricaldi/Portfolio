@@ -36,9 +36,9 @@ module.exports = app => {
       
         // setup email data with unicode symbols
         let mailOptions = {
-            from: '"Nodemailer Contact" <nricaldi.nr@gmail.com>', // sender address
+            from: '"Porfolio Contact" <nricaldi.nr@gmail.com>', // sender address
             to: 'nr.ricaldi@gmail.com', // list of receivers
-            subject: 'Node Contact Request', // Subject line
+            subject: `${req.body.company} contact request`, // Subject line
             text: 'Hello world?', // plain text body
             html: output // html body
         };
