@@ -1,5 +1,4 @@
 import React from 'react';
-import Bounce from 'react-reveal/Bounce';
 import Project from '../components/Project';
 import Fade from 'react-reveal/Fade';
 

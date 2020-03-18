@@ -1,9 +1,6 @@
 import React from 'react';
 import Card from '../components/Card';
-import Zoom from 'react-reveal/Zoom';
-import Bounce from 'react-reveal/Bounce';
 import Fade from 'react-reveal/Fade';
-import LightSpeed from 'react-reveal/LightSpeed';
 
 const About = props => {
   const speed = <i className="fas fa-tachometer-alt"></i>;

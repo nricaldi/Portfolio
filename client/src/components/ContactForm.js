@@ -2,6 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Fade from 'react-reveal/Fade';
 
+const initialErrors = {
+  nameError: "",
+  companyError: "",
+  emailError: "",
+  numberError: "",
+  messageError: ""
+}
+
 const ContactForm = props => {
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
@@ -9,20 +17,56 @@ const ContactForm = props => {
   const [number, setNumber] = useState("");
   const [message, setMessage] = useState("");
 
+  const [errors, setErrors] = useState(initialErrors);
+
+  const validate = () => {
+    let nameError = "";
+    let companyError = "";
+    let emailError = "";
+    let numberError = "";
+    let messageError = "";
+
+    if(name.length === 0)
+      nameError = <p className="error">Name cannot be blank</p>;
+
+    if(company.length === 0)
+      companyError = <p className="error">Company cannot be blank</p>;
+    
+    if(!email.includes('@'))
+      emailError = <p className="error">Invalid email</p>;
+    
+    if(number.length < 10)
+      numberError = <p className="error">Invalid phone number</p>;
+    
+    if(message.length < 5)
+      messageError = <p className="error">Message must be at least 5 characters</p>;
+  
+
+    if(nameError || companyError || emailError || numberError || messageError) {
+      setErrors({nameError, companyError, emailError, numberError, messageError});
+      return false;
+    }
+
+    return true;
+  }
+
   const sendMail = e => {
       e.preventDefault();
-      console.log("trying to send mail");
-      // console.log({name, company, email, number, message});
+      const isValid = validate();
 
-      axios.post("http://localhost:8000/send", {name, company, email, number, message})
-          .then(res => console.log(res))
-          .catch(err => console.log(err));
+      if (isValid){
+        axios.post("http://localhost:8000/send", {name, company, email, number, message})
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
 
-      setName("");
-      setCompany("");
-      setEmail("");
-      setNumber("");
-      setMessage("");
+        setName("");
+        setCompany("");
+        setEmail("");
+        setNumber("");
+        setMessage("");
+        setErrors(initialErrors);
+      }
+
   }
 
   return(
@@ -32,18 +76,11 @@ const ContactForm = props => {
         <h1 className="brand"><span>Nicolas</span> Ricaldi</h1>
         <div className="wrapper">
           <div className="company-info">
-            {/* <h3>Nicolas Ricaldi</h3> */}
             <ul>
                 <li><i className="fas fa-map-marked-alt"></i> - Northern Virginia</li>
-                {/* <li><i className="fa fa-phone"></i> - (571)-288-4243</li> */}
                 <li><i className="fa fa-envelope"></i> - nr.ricaldi@gmail.com</li>
-                {/* <li><a href="#" target="_blank" rel="noopener noreferrer"> <i className="fab fa-linkedin"></i> - LinkedIn</a> </li>
-                <li><a href="#" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i>  - GitHub</a></li> */}
-
-                {/* <li><a href="#" target="_blank" rel="noopener noreferrer"> <i className="fab fa-linkedin"></i></a> 
-                    <a href="#" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i></a></li> */}
             </ul>
-            
+
             <div className="links">
               <a href="https://www.linkedin.com/in/nicolas-ricaldi/" target="_blank" rel="noopener noreferrer"> <i className="fab fa-linkedin"></i></a> 
               <a href="https://github.com/nricaldi" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i></a>
@@ -55,7 +92,7 @@ const ContactForm = props => {
             <h3>Email Me</h3>
 
             <form onSubmit={sendMail}>
-              <p>
+              <div>
                 <label>Name</label>
                 <input 
                     type="text" 
@@ -63,9 +100,10 @@ const ContactForm = props => {
                     onChange={e => setName(e.target.value)}
                     value={name}
                 />
-              </p>
+                {errors.nameError}
+              </div>
 
-              <p>
+              <div>
                 <label>Company</label>
                 <input 
                     type="text" 
@@ -73,10 +111,10 @@ const ContactForm = props => {
                     onChange={e => setCompany(e.target.value)}
                     value={company}
                 />    
-                
-              </p>
+                {errors.companyError}               
+              </div>
 
-              <p>
+              <div>
                 <label>Email Address</label>
                 <input 
                     type="email" 
@@ -84,10 +122,10 @@ const ContactForm = props => {
                     onChange={e => setEmail(e.target.value)}
                     value={email}
                 />                      
-                
-              </p>
+                {errors.emailError}
+              </div>
 
-              <p>
+              <div>
                 <label>Phone Number</label>
                 <input 
                     type="text" 
@@ -95,10 +133,10 @@ const ContactForm = props => {
                     onChange={e => setNumber(e.target.value)}
                     value={number}
                 />    
-                
-              </p>
+                {errors.numberError}
+              </div>
 
-              <p className="full">
+              <div className="full">
                 <label>Message</label>
                 <textarea 
                     name="message" 
@@ -106,8 +144,8 @@ const ContactForm = props => {
                     onChange={e => setMessage(e.target.value)}
                     value={message}
                 />
-         
-              </p>
+                {errors.messageError}
+              </div>
 
               <p className="full">
                 <button type="submit">Submit</button>
