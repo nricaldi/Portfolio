@@ -25,7 +25,7 @@ export const StyledMenu = styled.nav`
   a {
     font-size: 1.25rem;
     text-transform: uppercase;
-    padding: 1rem 0;
+    padding: 1rem;
     font-weight: light;
     letter-spacing: 0.5rem;
     color: ${({ theme }) => theme.primaryLight};

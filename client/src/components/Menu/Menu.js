@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { bool } from 'prop-types';
 import { StyledMenu } from './Menu.styled';
 import { Link } from 'react-router-dom';
-import logo from '../../img/logo2.png';
+import logo from '../../img/logo.svg';
 
 const Menu = ({ open, ...props }) => {
   
@@ -30,8 +30,12 @@ const Menu = ({ open, ...props }) => {
       
       {/* <img src={logo} alt="logo" className="logo"></img> */}
 
-      <Link to="/" tabIndex={tabIndex}>
-        <img src={logo} alt="logo" className="logo"></img>
+      <Link to="/" tabIndex={tabIndex} onClick={e => activeItem(e, "home")}>
+        <img 
+          src={logo} 
+          alt="logo" 
+          style={{ width: 100}}
+        />
       </Link>
 
       <Link to="/" tabIndex={tabIndex} id="home" onClick={e => activeItem(e, "home")}>

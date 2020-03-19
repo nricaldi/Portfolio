@@ -28,12 +28,6 @@
   font-family: 'Roboto', sans-serif;
 }
 
-.logo {
-  width: 200px;
-  margin: 0 auto;
-  margin-bottom: -50px;
-}
-
 .active {
   font-weight: bold;
 }
@@ -74,7 +68,7 @@
   background-color: #000;
   width: 100px;
   margin: 0 auto;
-  margin-bottom: 2rem;
+  margin-bottom: 2rem; 
 }
 
 @media (min-width: 768px){
@@ -598,24 +592,22 @@ ul{
 }
 
 .company-info li {
-  padding-bottom: .5rem;
+  padding-bottom: 1rem;
+}
+
+.company-info ul {
+  /* margin-bottom: .5rem; */
 }
 
 .company-info a {
   text-decoration: none;
   color: #d1d1d1;
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-right: 1rem;
 }
 
-.company-info {
-  position: relative;
-}
-
 .links {
-  position: absolute;
-  bottom: 1rem;
-  left: 1.25rem;
+   text-align: center;
 }
 
 /* FORM STYLES */
@@ -679,13 +671,32 @@ ul{
     padding:2em;
   }
 
+  .company-info {
+    position: relative;
+  }
+
   .company-info h3, .company-info ul, .brand{
     text-align: left;
+  }
+
+  .company-info ul {
+    margin-bottom: 0;
   }
 
   .company-info li {
     font-size: 12px;  
     padding: .5rem 0;
+  }
+
+  .company-info a {
+    font-size: 2rem;  
+    padding: 0;
+  }
+
+  .links {
+    position: absolute;
+    bottom: 1rem;
+    left: 1.25rem;
   }
 
   .contact form button, .contact form input, .contact form textarea{
