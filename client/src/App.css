@@ -482,9 +482,18 @@
 
 @media(min-width: 1440px) {
   .Modal {
+    top: 25%;
+    left: 25%;
+    right: 25%;
+    bottom: 25%;
+  }
+}
+
+@media(min-width: 2300px) {
+  .Modal {
     top: 20%;
-    left: 20%;
-    right: 20%;
+    left: 30%;
+    right: 30%;
     bottom: 20%;
   }
 }

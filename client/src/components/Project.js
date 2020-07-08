@@ -13,7 +13,6 @@ const Project = props => {
           <img src={props.img} className="proj-pic" alt="project"></img>
           <div className="proj-text">
             <h3>{props.title}</h3>
-            <p>{props.description}</p>
           </div>
           <button onClick={() => setModalIsOpen(true)} className="btn" >More Info</button>
           <a href={props.link} target="_blank" rel="noopener noreferrer"><button className="btn">Demo</button></a>
@@ -31,7 +30,7 @@ const Project = props => {
           <h2>{props.title}</h2>
           <img src={props.img} className="modal-pic" alt="project"></img>
           <p>{props.description}</p>
-          <h4>Languages/Frameworks</h4>
+          <h4>Technologies Used</h4>
           <div className="bubbles">
             {props.languages.map((value, i) => {
               return <span className="bubble" key={i}>{value}</span>

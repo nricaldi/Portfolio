@@ -26,8 +26,8 @@ module.exports = app => {
           secure: false, // true for 465, false for other ports
           // service: 'gmail',
           auth: {
-              user: 'narman0799@gmail.com', // generated ethereal user
-              pass: 'Gotentacion20!'  // generated ethereal password
+              user: 'nricaldi.nr@gmail.com', // generated ethereal user
+              pass: 'skxpvesbhlzhbnnl'
           },
           tls:{
             rejectUnauthorized:false
